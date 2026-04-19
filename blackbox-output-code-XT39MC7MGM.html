@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Café - Premium Coffee Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+        
+        :root {
+            --wine-red: #8B0000;
+            --wine-red-dark: #660000;
+            --gold: #D4AF37;
+            --gold-dark: #B8860B;
+            --cream: #F5F5DC;
+            --dark-bg: #1a1a1a;
+            --card-bg: rgba(255,255,255,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, var(--wine-red) 0%, var(--wine-red-dark) 100%);
+            color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        .luxury-gradient {
+            background: linear-gradient(45deg, var(--wine-red), var(--gold), var(--wine-red-dark));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.8), rgba(212, 175, 55, 0.3));
+        }
+
+        .menu-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(139, 0, 0, 0.4);
+        }
+
+        .review-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(0,0,0,0.3));
+        }
+
+        .checkout-panel {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .checkout-open {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                transform: translateY(20px);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-gold">
+                <i class="fas fa-coffee mr-2"></i>Luxe Café
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-gold transition-all duration-300">Home</a>
+                <a href="#menu" class="hover:text-gold transition-all duration-300">Menu</a>
+                <a href="#reviews" class="hover:text-gold transition-all duration-300">Reviews</a>
+                <a href="#contact" class="hover:text-gold transition-all duration-300">Contact</a>
+            </div>
+            <button id="cartBtn" class="bg-gold text-wine-red px-6 py-2 rounded-full font-semibold hover:bg-gold-dark transition-all duration-300 flex items-center">
+                <i class="fas fa-shopping-cart mr-2"></i>Order
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen relative overflow-hidden">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-gold opacity-20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-wine-red opacity-30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+        <div class="relative z-10 flex items-center justify-center min-h-screen px-6">
+            <div class="text-center hero-content max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 bg-gradient-to-r from-gold to-cream bg-clip-text text-transparent">
+                    Luxe Café
+                </h1>
+                <p class="text-xl md:text-2xl mb-12 opacity-90 leading-relaxed">
+                    Experience the art of premium coffee in an atmosphere of timeless elegance
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="#menu" class="bg-gold text-wine-red px-12 py-5 rounded-full text-xl font-semibold hover:bg-gold-dark transform hover:scale-105 transition-all duration-300 gold-glow">
+                        View Menu
+                    </a>
+                    <a href="#order" class="border-2 border-gold text-gold px-12 py-5 rounded-full text-xl font-semibold hover:bg-gold hover:text-wine-red transition-all duration-300">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gold to-cream bg-clip-text text-transparent">
+                    Our Menu
+                </h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                    Indulge in our curated selection of premium beverages and exquisite pastries
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Coffee -->
+                <div class="menu-card glass-effect p-8 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-24 h-24 bg-gold rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-coffee text-2xl text-wine-red"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 text-gold">Premium Coffee</h3>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex justify-between">
+                            <span>Espresso</span>
+                            <span>$4.50</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Cappuccino</span>
+                            <span>$5.50</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Latte</span>
+                            <span>$6.00</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-gold">
+                            <span>Signature Blend</span>
+                            <span>$8.50</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart w-full bg-gold text-wine-red py-4 rounded-2xl font-bold text-lg hover:bg-gold-dark transition-all duration-300" data-items='[{"name":"Espresso","price":4.50},{"name":"Cappuccino","price":5.50},{"name":"Latte","price":6.00},{"name":"Signature Blend","price":8.50}]'>
+                        Add to Order
+                    </button>
+                </div>
+
+                <!-- Tea -->
+                <div class="menu-card glass-effect p-8 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-24 h-24 bg-gold rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-leaf text-2xl text-wine-red"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 text-gold">Artisan Tea</h3>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex justify-between">
+                            <span>Earl Grey</span>
+                            <span>$4.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Matcha Latte</span>
+                            <span>$6.50</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Chai</span>
+                            <span>$5.00</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-gold">
+                            <span>Rose Infusion</span>
+                            <span>$7.00</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart w-full bg-gold text-wine-red py-4 rounded-2xl font-bold text-lg hover:bg-gold-dark transition-all duration-300" data-items='[{"name":"Earl Grey","price":4.00},{"name":"Matcha Latte","price":6.50},{"name":"Chai","price":5.00},{"name":"Rose Infusion","price":7.00}]'>
+                        Add to Order
+                    </button>
+                </div>
+
+                <!-- Pastries -->
+                <div class="menu-card glass-effect p-8 rounded-3xl text-center lg:col-span-2" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-24 h-24 bg-gold rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-birthday-cake text-2xl text-wine-red"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 text-gold">Artisan Pastries</h3>
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Croissant</span>
+                                <span>$3.50</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span>Almond Croissant</span>
+                                <span>$4.50</span>
+                            </div>
+                            <div class="flex justify-between font-bold text-gold">
+                                <span>Pistachio Danish</span>
+                                <span>$6.00</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Macaron (6pc)</span>
+                                <span>$12.00</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span>Chocolate Éclair</span>
+                                <span>$5.50</span>
+                            </div>
+                            <div class="flex justify-between font-bold text-gold">
+                                <span>Signature Torte</span>
+                                <span>$8.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart w-full bg-gold text-wine-red py-4 rounded-2xl font-bold text-lg hover:bg-gold-dark transition-all duration-300" data-items='[{"name":"Croissant","price":3.50},{"name":"Almond Croissant","price":4.50},{"name":"Pistachio Danish","price":6.00},{"name":"Macaron (6pc)","price":12.00},{"name":"Chocolate Éclair","price":5.50},{"name":"Signature Torte","price":8.00}]'>
+                        Add to Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-32 px-6 bg-wine-red-dark/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gold to-cream bg-clip-text text-transparent">
+                    What Our Guests Say
+                </h2>
+                <p class="text-xl opacity-90">Rave reviews from our discerning clientele</p>
+            </div>
+
+            <div class="review-container overflow-hidden" id="reviewSlider">
+                <div class="flex transition-transform duration-1000 ease-in-out" id="reviewTrack">
+                    <div class="review-card glass-effect p-10 rounded-3xl max-w-md mx-6 flex-shrink-0" data-aos="fade-up">
+                        <div class="flex mb-6">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-wine-red font-bold text-xl mr-4">AB</div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gold">Alexander B.</h4>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-lg leading-relaxed">"The finest coffee experience I've ever had. The ambiance, the service, the quality—absolutely perfection."</p>
+                    </div>
+                    <div class="review-card glass-effect p-10 rounded-3xl max-w-md mx-6 flex-shrink-0" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex mb-6">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-wine-red font-bold text-xl mr-4">SM</div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gold">Sophia M.</h4>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-lg leading-relaxed">"Their pastries are works of art. The matcha latte is divine. Worth every penny for this luxury experience."</p>
+                    </div>
+                    <div class="review-card glass-effect p-10 rounded-3xl max-w-md mx-6 flex-shrink-0" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex mb-6">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-wine-red font-bold text-xl mr-4">JD</div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gold">James D.</h4>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-lg leading-relaxed">"Exceptional service and incredible attention to detail. This is what luxury coffee should be."</p>
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="review-card glass-effect p-10 rounded-3xl max-w-md mx-6 flex-shrink-0">
+                        <div class="flex mb-6">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-wine-red font-bold text-xl mr-4">AB</div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gold">Alexander B.</h4>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-lg leading-relaxed">"The finest coffee experience I've ever had. The ambiance, the service, the quality—absolutely perfection."</p>
+                    </div>
+                    <div class="review-card glass-effect p-10 rounded-3xl max-w-md mx-6 flex-shrink-0">
+                        <div class="flex mb-6">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-wine-red font-bold text-xl mr-4">SM</div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gold">Sophia M.</h4>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-lg leading-relaxed
